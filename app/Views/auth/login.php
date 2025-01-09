@@ -4,11 +4,15 @@ use App\Repository\UserRepository;
 
 if(isset($_POST['submitSignIn'])){
 
-  $repository = new UserRepository();
-  $user = $repository->findByEmail($_POST['email']);
 
-  var_dump($user);
-  exit();
+  // $request = new RegisterRequest($)
+
+
+  // $repository = new UserRepository();
+  // $user = $repository->findByEmail($_POST['email']);
+
+  // var_dump($user);
+  // exit();
 
 }
 ?>

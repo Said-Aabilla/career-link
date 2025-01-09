@@ -1,9 +1,18 @@
 <?php
 require __DIR__."/../../../vendor/autoload.php";
-use App\Config\Database;
-$conn = Database::getConnection();
+
+use App\Http\Request\RegisterRequest;
+use App\Http\Controller\Auth\AuthController;
+
+if(isset($_POST['registeruser'])){
 
 
+  $request = new RegisterRequest($_POST['emailRegister'],$_POST['passwordRegister'],$_POST['roleRegister']);
+  $controller = new AuthController();
+  $controller->register($request);
+
+  
+}
 ?>
 
 
@@ -30,8 +39,8 @@ $conn = Database::getConnection();
             <label for="role" class="block text-sm font-medium text-gray-700">Role</label>
             <select id="role" name="roleRegister" required
               class="mt-2 block w-full px-4 py-3 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 placeholder-gray-500 text-gray-900 focus:outline-none">
-              <option value="candidate">Candidate</option>
-              <option value="recruiter">Recruiter</option>
+              <option value="2">Candidate</option>
+              <option value="3">Recruiter</option>
             </select>
             </div>
 
@@ -48,7 +57,7 @@ $conn = Database::getConnection();
         </div>
 
         <div>
-          <button type="submitSignUp" name="registeruser" id="buttonRegister"
+          <button type="submit" name="registeruser" id="buttonRegister"
             class="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-4 rounded-md shadow-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50">
             Sign Up
           </button>
